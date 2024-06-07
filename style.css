@@ -1,0 +1,221 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    font-size: 15pt;
+    background-color:#161400;
+    color:#FFFEF2;
+    font-family: "Poppins", sans-serif;
+}
+.content{
+    display: flex;
+    width: 100vw;
+    height:90vh;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.bioDiv p{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    font-size: small;
+    opacity: .5;
+}
+.bigBtn{
+    width: 220px;
+    height:50px;
+    background-color: #FFE800;
+    color:#161400;
+    border:none;
+    border-radius:10px;
+    margin-bottom: 10px;
+    cursor:pointer;
+    font-weight: 600;
+    font-size: medium;
+}
+.btnsDiv{
+    height:auto;
+    padding:10px; 
+    width: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+#profileImg{
+    width:250px;
+    height:250px;
+    border:none;
+    border-radius: 50%;
+}
+.bioDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btnsDiv{
+    display:none;
+}
+.loginInputs{
+    width:220px;
+height: 50px;
+border: none;
+text-align: center;
+border-radius: 5px;
+margin-bottom: 10px;
+margin-top: 10px;
+}
+.loginDiv{
+    height:auto;
+    width: 70vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 10px 5px;
+    
+}
+#createBtn{
+    margin-top: 20px;
+}
+.attendanceSheetDiv{
+    width:100vw;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color:black;
+}
+.attendanceSheetDiv{
+    width:350px;
+    height:600px;
+    border:.5px solid grey;
+    border-radius:10px;
+    
+}
+.attendanceSheetDiv{
+    margin-top: 150px;
+    height: auto;
+    padding:20px 20px;
+    justify-content: Center;
+}
+#classEle{
+    background-color:white;
+    margin-top:100px;
+    text-align: center;
+}
+.eContent{
+  height:80vh;
+  width: 100vw;
+  display:flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction:column;
+}
+header{
+  padding:10px 5px;
+  font-family: "Poppins", sans-serif;
+  
+}
+.reportInp{
+  width: 100%;
+}
+.entryDiv{
+  height: auto;
+  width:100vw;
+  padding:20px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  border-bottom: .5px solid grey;
+}
+.ft{
+  width:40vw;
+}
+header{
+  border-bottom: .5px solid gray;
+}
+#reportBtn{
+  margin-top:30px;
+}
+.enterDiv,.reportDiv,.tableDiv{
+  display: none;
+}
+.entryDiv{
+  border-top: 0.5px solid grey;
+}
+.backDiv button img {
+  width: 30px;
+  height: 30px;
+}
+.backDiv button{
+  background-color: transparent;
+  width: 50px;
+  height:50px;
+  border: none;
+}
+#msg,#saveDiv{
+  margin-top: 300px;
+}
+#saveDiv{
+  display: none;
+}
+.resetDiv{
+  position: fixed;
+  bottom:10px;
+}
+#resetBtn{
+  width:145px;
+}
+.reportTableDiv{
+  width: 100vw;
+}
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 4px solid white;
+}
+.y{
+  color:#161400;
+  background-color:yellow;
+}
+#heading{
+  font-size: 23px;
+}
+
+#headingDiv{
+  width:auto ;
+}
+.backDiv{
+  width:auto;
+  margin-right: 10px;
+}
+#eHeader,#rHeader{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+#dateEle{
+  opacity: 0.6;
+  font-size: medium;
+}
+#reportTableDiv{
+  text-align: center;
+  padding: 15px 5px;
+}

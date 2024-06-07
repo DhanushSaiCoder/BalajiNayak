@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Balaji Nayak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="content" class="content">
+        <div id="bioDiv" class="bioDiv">
+            <img id="profileImg" src="profile.jpg" alt="profile.jpg">
+            <h1>Balaji Nayak .V</h1>
+            <p>Librarian • Dr.K.L.P.Public School</p>
+        </div>
+        <div id="btnsDiv" class="btnsDiv">
+           <button onclick="showEnter()" class="bigBtn" id="enterBtn">Enter Attendance</button>
+            <button onclick="showReport()" class="bigBtn" id="viewReportBtn">View Report</button>
+        </div>
+        <div id="loginDiv" class="loginDiv">
+            <input id="passEle" class="loginInputs" placeholder="PIN" type="number">
+            <button onclick="start()" class="bigBtn" id="createBtn">Enter</button>
+        </div>
+        
+    </div>
+    <div id="enterDiv" class="enterDiv">
+      
+    
+    <header id="eHeader">
+        <div class="backDiv">
+        <button onclick="back('enter')"><img src="back.png" alt="back.png"></button>
+      </div>
+      <div id='headingDiv'>
+        
+        <h2 id="heading">Enter Today's Attendance</h2>
+        <p id="dateEle">Date: </p>
+       </div>
+    </header>
+    <div class="eContent">
+        <div id='attendanceSheetDiv' class="attendanceSheetDiv">
+            <h3 id="periodTxt">Period - 1</h3>
+            <select class="bigBtn" name="classEle" id="classEle">
+                <option value="0">Select Class</option>
+                <option value="LL">Leisure</option>
+                <option value="1A">1A</option>
+                <option value="1B">1B</option>
+              
+                <option value="1C">1C</option>
+                <option value="1D">1D</option>
+                <option value="1E">1E</option>
+                <option value="2A">2A</option>
+                <option value="2B">2B</option>
+                <option value="2C">2C</option>
+                <option value="2D">2D</option>
+                <option value="2E">2E</option>
+                <option value="3A">3A</option>
+                <option value="3B">3B</option>
+                <option value="3C">3C</option>
+                <option value="3D">3D</option>
+                <option value="3E">3E</option>
+                <option value="4A">4A</option>
+                <option value="4B">4B</option>
+                <option value="4C">4C</option>
+                <option value="4D">4D</option>
+                <option value="4E">4E</option>
+                <option value="5A">5A</option>
+                <option value="5B">5B</option>
+                <option value="5C">5C</option>
+                <option value="5D">5D</option>
+                <option value="5E">5E</option>
+                <option value="6A">6A</option>
+                <option value="6B">6B</option>
+                <option value="6C">6C</option>
+                <option value="6D">6D</option>
+                <option value="6E">6E</option>
+                <option value="7A">7A</option>
+                <option value="7B">7B</option>
+                <option value="7C">7C</option>
+                <option value="7D">7D</option>
+                <option value="7E">7E</option>
+                <option value="8A">8A</option>
+                <option value="8B">8B</option>
+                <option value="8C">8C</option>
+                <option value="8D">8D</option>
+                <option value="8E">8E</option>
+                <option value="9A">9A</option>
+                <option value="9B">9B</option>
+                <option value="9C">9C</option>
+                <option value="9D">9D</option>
+                <option value="9E">9E</option>
+                <option value="10A">10A</option>
+                <option value="10B">10B</option>
+                <option value="10C">10C</option>
+                <option value="10D">10D</option>
+                <option value="10E">10E</option>
+                <option value="MPC1">MPC1</option>
+                <option value="BiPC1">BiPC1</option>
+                <option value="MBiPC1">MBiPC1</option>
+                <option value="HPG1">HPG1</option>
+                <option value="MPC2">MPC2</option>
+                <option value="BiPC2">BiPC2</option>
+                <option value="MBiPC2">MBiPC2</option>
+                <option value="HPG2">HPG2</option>         
+             </select>
+             <button id="nxt" onclick="saveClass()" class="bigBtn">Next Period</button>
+        </div>
+        <div class="resetDiv">
+          <button id="resetBtn" onclick="reset()" class="bigBtn">Reset Data</button>
+        </div>
+        <p id="msg"></p>
+    </div>
+    </div>
+    <div id="reportDiv" class="reportDiv">
+      <header id="rHeader">
+      <div class="backDiv">
+        <button onclick="back('report')"><img src="back.png" alt="back.png"></button>
+      </div>
+      <h2>Report</h2>
+        
+      </header>
+    <div class="entryDiv">
+      
+    
+    <div class="ft" id="fromDiv">
+      <p>FROM</p>
+      <input id="fromEle" placeholder="Date" class="loginInputs reportInp" min="1" max="31" type="number">
+    </div>
+    <div class="ft" id="toDiv">
+      <p>TO</p>
+      <input id="toEle" placeholder="Date" class="loginInputs reportInp" min="1" max='31' type="number">
+    </div>
+    <br>
+    <button onclick="check()" class="bigBtn" id="reportBtn">Check Report</button>
+    </div>
+    <div id='reportTableDiv' class="reportTableDiv">
+      <p id="emptyTxt"></p>
+      <div id="tableDiv" class="tableDiv">
+         <table border="1px" class="tableEle">
+         <thead>
+          <tr>
+          <td class="y"><b>CLASS</b></td>
+          <td class="y"><b>ATTENDED</b></td>
+          </tr>
+         </thead>
+         <tbody id="tbody">
+           
+         </tbody>
+         </table>
+      </div>
+    </div>
+  </div>
+    <script src="main.js"></script>
+</body>
+</html>
