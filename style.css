@@ -249,7 +249,7 @@ th, td {
 .dataForms {
   
   font-size: 0.8rem;
-  background-color: hsla(61, 100%, 50%, 0.466);
+  background-color: hsla(61, 100%, 50%, 1);
   color:#fff;
   width: 95%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.361);
