@@ -129,9 +129,16 @@ function submitForm(){
 
   }
   localStorage.setItem('dataArr',JSON.stringify(dataArr))
+
+
+  document.getElementById('enterContentDiv').style.display = 'none'
+  document.getElementById('successDiv').style.display = 'flex'
+
+
   
 }
 
+document.getElementById('successDiv').style.display = 'none'
 
 function getDayObj() {
   if (typeof localStorage !== 'undefined') {
@@ -176,4 +183,10 @@ function getDayObj() {
     console.error('Local storage is not supported in this browser.');
     return null;
   }
+}
+
+
+function reEnter(){
+   document.getElementById('enterContentDiv').style.display = 'flex'
+  document.getElementById('successDiv').style.display = 'none'
 }

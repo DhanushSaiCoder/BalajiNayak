@@ -336,7 +336,7 @@ th, td {
 .enterContentDiv label{
   text-align: center;
 }
-#submitBtn{
+#submitBtn,#reenterBtn{
   width:auto;
   height:auto;
   padding: 10px 40px;
@@ -355,4 +355,16 @@ th, td {
 .radio{
   width: 20px;
   height: 20px;
+}
+#successDiv{
+  
+  width:auto;
+  height:auto;
+  padding:20px 30px;
+  display: flex;align-items: center;justify-content: center;flex-direction: column;
+  
+}
+#reenterBtn:hover{
+  background-color: #FFE800;
+  cursor: pointer;
 }
