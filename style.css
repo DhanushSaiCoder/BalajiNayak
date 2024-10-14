@@ -63,6 +63,9 @@ body {
     border:none;
     border-radius: 50%;
 }
+option{
+  color:#161400;
+}
 .bioDiv{
     display: flex;
     align-items: center;
@@ -233,7 +236,7 @@ th, td {
 }
 
 #enterContentDivContainer{
-  width:100vw;
+  width:97vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -286,6 +289,7 @@ th, td {
   width: 60px;height: 35px;
   border-radius: 5px;
   margin-right: 1px;
+  font-size: small;
 }
 .dataForms button {
   background-color: #6200ea;
