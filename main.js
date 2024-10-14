@@ -1,6 +1,6 @@
 // Declare the password
 let pass = '';
-
+let login = false;
 // Function to start the login process
 function start() {
     var passEle = document.getElementById('passEle');
@@ -71,9 +71,10 @@ let dataArr = [
   }
 ];
 
-console.log(dataArr)
 
-
+function submitForm(){
+  alert("form submitted")
+}
 
 
 

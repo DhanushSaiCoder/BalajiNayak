@@ -228,3 +228,124 @@ th, td {
   text-align: center;
   padding: 15px 5px;
 }
+
+#enterContentDivContainer{
+  width:100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    padding:20px 10px;
+}
+#enterContentDiv{
+  width:auto;
+  height:auto;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.dataForms {
+  
+  font-size: 0.8rem;
+  background-color: hsla(61, 100%, 50%, 0.466);
+  color:#fff;
+  width: 95%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.361);
+  border-radius: 10px;
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-bottom: 25px;;
+}
+.subDiv{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  border-bottom: 0.41px solid rgb(255, 255, 255);
+  width:100%;
+}
+
+.dataForms label, .dataForms select, .dataForms input[type="radio"], .dataForms button {
+  margin: 10px 05px;
+}
+
+.dataForms select, .dataForms input[type="radio"] {
+  padding: 5px;
+  font-size: 16px;
+}
+.dataForms select{
+  width: 60px;height: 35px;
+  border-radius: 5px;
+  margin-right: 1px;
+}
+.dataForms button {
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: auto;
+}
+
+.dataForms button:hover {
+  background-color: #3700b3;
+}
+.radio:hover,.dataForms select:hover{
+  cursor: pointer;
+}
+.radio{
+  height:2rem;
+}
+.substitutionDiv,.selectionDiv{
+  width:50%;
+  height: 100%;
+  font-size: 0.82rem;
+  display: flex;align-items: center;justify-content: center;
+
+  
+}
+.selectionDiv select{
+  width:45%;
+  height: 100%;
+}
+.substitutionDiv input{
+  width:20px;
+  height:20px;
+}
+.selectionDiv{
+  border-left: 0.41px solid rgb(255, 255, 255);
+}
+.section{
+  display: flex;align-items: center;justify-content: center;
+}
+.enterContentDiv label{
+  text-align: center;
+}
+#submitBtn{
+  width:auto;
+  height:auto;
+  padding: 10px 40px;
+  border:none;
+  border-radius: 5px;
+  background-color: #ccbb00;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  font-size: large;
+}
+#submitBtn:hover{
+  cursor: pointer;
+  background-color: #FFE800;
+}
+.radio{
+  width: 20px;
+  height: 20px;
+}
