@@ -78,6 +78,9 @@ function generateClassString(form){
   let cls = form.class.value;
   let section = form.option.value;
   let Class = cls+section;
+
+  //temporarily pushed into regula/subArr 
+
   if(form.substitution.checked){
     subArr.push(Class)
     return
