@@ -71,9 +71,19 @@ let dataArr = [
   }
 ];
 
+let form1= document.getElementById('dataForm1')
+let form2= document.getElementById('dataForm2')
+let form3= document.getElementById('dataForm3')
+let form4= document.getElementById('dataForm4')
+let form5= document.getElementById('dataForm5')
+let form6= document.getElementById('dataForm6')
+let form7= document.getElementById('dataForm7')
+let form8= document.getElementById('dataForm8')
+
 
 function submitForm(){
-  alert("form submitted")
+  console.log(form1.substitution.checked)  
+
 }
 
 
@@ -83,33 +93,3 @@ function submitForm(){
 
 
 
-
-
-
-
-
-
-
-/*function displayTable(arr){
-  let reportTableDiv = document.getElementById('reportTableDiv');
-  let tableDiv = document.getElementById('tableDiv');
-  let tbody = document.getElementById('tbody');
-  reportTableDiv.style.display = 'block';
-  tableDiv.style.display = 'block';
-  let innerHTML = '';
-  let html = '';
-  
-  
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] !== 0) {
-      if (arr[i] === 1) {
-        html = `<tr><td>${fullArr[i]}</td><td>${arr[i]} Time</td></tr>`
-      }else{
-      html = `<tr><td>${fullArr[i]}</td><td>${arr[i]} Times</td></tr>`
-      }
-      innerHTML += html;
-    }
-  }
-  tbody.innerHTML = innerHTML;
-}
-  */
