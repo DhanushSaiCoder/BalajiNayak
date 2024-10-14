@@ -177,10 +177,3 @@ function getDayObj() {
     return null;
   }
 }
-
-
-
-
-
-
-
