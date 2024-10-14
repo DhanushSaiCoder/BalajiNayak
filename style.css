@@ -371,3 +371,19 @@ th, td {
 svg{
   color:white;
 }
+#mainHeader{
+  width:100vw;
+  height:auto;
+  display: flex;align-items: center;justify-content: flex-end;
+  padding: 20px 20px;
+  
+}
+#mainHeader i{
+  height:30px;
+  font-size: 30px;
+  color:#FFE800;
+}
+#mainHeader i:hover{
+  color:#ccbb00;
+  cursor:pointer;
+}

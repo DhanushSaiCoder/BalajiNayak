@@ -8,6 +8,8 @@ function start() {
     if (passEle.value === pass) {
         document.getElementById('loginDiv').style.display = 'none';
         document.getElementById('btnsDiv').style.display = 'flex';
+    document.getElementById('mainHeader').style.display = 'flex'
+
     } else {
         passEle.value = '';
         alert('Incorrect Password');
@@ -18,6 +20,7 @@ function start() {
 function showEnter() {
     document.getElementById('content').style.display = 'none';
     document.getElementById('reportDiv').style.display = 'none';
+document.getElementById('mainHeader').style.display = 'none'
     document.getElementById('enterDiv').style.display = 'block';
 }
 
@@ -25,20 +28,25 @@ function showReport() {
     document.getElementById('content').style.display = 'none';
     document.getElementById('enterDiv').style.display = 'none';
     document.getElementById('reportDiv').style.display = 'block';
+document.getElementById('mainHeader').style.display = 'none'
+
 }
 
 // Function to go back to the main content
 function back(curr) {
     if (curr === 'report') {
+document.getElementById('mainHeader').style.display = 'flex'
         document.getElementById('reportDiv').style.display = 'none';
         document.getElementById('content').style.display = 'flex';
         showMenu();
     } else if (curr === 'enter') {
         document.getElementById('enterDiv').style.display = 'none';
+document.getElementById('mainHeader').style.display = 'flex'
         document.getElementById('content').style.display = 'flex';
         showMenu();
     }
 }
+document.getElementById('mainHeader').style.display = 'none'
 
 // Function to show the menu
 function showMenu() {
