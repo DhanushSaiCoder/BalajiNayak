@@ -4,6 +4,11 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
+::selection {
+  background-color: yellow;
+  color: black; /* Optional: Changes the text color within the selection */
+}
+
 
 body {
     font-size: 15pt;
@@ -151,6 +156,9 @@ header{
 }
 .enterDiv,.reportDiv,.tableDiv{
   display: none;
+  /*background-color: red;*/
+  
+  
 }
 .entryDiv{
   border-top: 0.5px solid grey;
@@ -195,8 +203,9 @@ th, td {
   color:#161400;
   background-color:yellow;
 }
-#heading{
+#heading,.heading{
   font-size: 23px;
+  font-weight: 550;
 }
 
 #headingDiv{
