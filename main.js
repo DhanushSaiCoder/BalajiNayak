@@ -54,6 +54,40 @@ document.getElementById('dateEle').innerHTML = `Date: ${date} / ${new Date().get
 
 
 
+//Data Arr
+
+let dataArr = [
+  {
+    date: new Date().getDate(), 
+    month: new Date().getMonth() + 1,
+    year: new Date().getFullYear(),
+    
+    regularClasses: [],
+    substitutionClasses: [],
+    
+    totalRegClasses: 0,
+    totalSubClasses: 0,
+    totalClasses: 0
+  }
+];
+
+console.log(dataArr)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*function displayTable(arr){
   let reportTableDiv = document.getElementById('reportTableDiv');
