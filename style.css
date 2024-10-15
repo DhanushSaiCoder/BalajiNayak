@@ -458,20 +458,35 @@ svg {
 .backImg:hover {
   cursor: pointer;
 }
-.entryDiv{
+.entryDiv {
 }
-#reportTableDivContainer{
-  width:100vw;
+#reportTableDivContainer {
+  width: 100vw;
   height: auto;
-  padding:30px 15px;
-  display: flex;align-items: center;justify-content: center;
-
+  padding: 30px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-#reportTable{
+#reportTable {
   width: 90%;
   font-size: small;
   max-width: 400px;
 }
-#reportTable tr th{
-  background-color: #ffe800;color: #161400;border-color: #ffe800;
+#reportTable tr th,
+td {
+  background-color: aliceblue;
+  color: #161400;
+  border-color: #ffe800;
+  border: none;
 }
+#reportTable tr th {
+  background-color: #ffe800;
+  color: #161400;
+}
+
+#reportTable tr {
+  border-bottom: 1.4px solid lightgray;
+}
+
+
