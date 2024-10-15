@@ -212,8 +212,6 @@ function resetData() {
 
 /// report section >>
 
-
-
 function isWithinRange(obj, fromDate, toDate) {
   let objDate = new Date(obj.year, obj.month - 1, obj.date);
   return objDate >= fromDate && objDate <= toDate;
@@ -231,25 +229,25 @@ function check() {
   // Gets the required data from the dataArr in the localstorage and stores it in requiredData[]
   let requiredData = [];
   for (let i = 0; i < dataArr.length; i++) {
-      let obj = dataArr[i];
-      if (isWithinRange(obj, fromDate, toDate)) {
-          requiredData.push(obj);
-      }
+    let obj = dataArr[i];
+    if (isWithinRange(obj, fromDate, toDate)) {
+      requiredData.push(obj);
+    }
   }
   console.log(requiredData);
 
   // Fetches the requiredRegularClasses[]
   let requiredRegularClasses = [];
   for (let i = 0; i < requiredData.length; i++) {
-      let obj = requiredData[i];
-      requiredRegularClasses.push(...obj.regularClasses);
+    let obj = requiredData[i];
+    requiredRegularClasses.push(...obj.regularClasses);
   }
 
   // Fetches the requiredSubstitutionClasses[]
   let requiredSubstitutionClasses = [];
   for (let i = 0; i < requiredData.length; i++) {
-      let obj = requiredData[i];
-      requiredSubstitutionClasses.push(...obj.substitutionClasses);
+    let obj = requiredData[i];
+    requiredSubstitutionClasses.push(...obj.substitutionClasses);
   }
 
   // Removes nulls from both the required arrays
@@ -259,8 +257,8 @@ function check() {
   formTable(requiredRegularClasses, requiredSubstitutionClasses);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('reportBtn').addEventListener('click', check);
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("reportBtn").addEventListener("click", check);
 });
 
 function filterClasses(classes, regular, substitution) {
@@ -362,7 +360,7 @@ function formTable(reg, sub) {
 
   let tableHTML = document.getElementById("reportTable");
 
-  let innerHtml = tableHTML.innerHTML=`<table id="reportTable">
+  let innerHtml = (tableHTML.innerHTML = `<table id="reportTable">
   <tr class="tableRow">
     <th>CLASS</th>
     <th>REGULAR</th>
@@ -370,7 +368,7 @@ function formTable(reg, sub) {
     <th>TOTAL</th>
   </tr>
   
-</table>`;
+</table>`);
   let tempHtml = innerHtml;
   for (let i = 0; i < fullArr.length; i++) {
     let html = `
@@ -397,10 +395,8 @@ function formTable(reg, sub) {
         </table><p id="noData">No data found in entered dates</p>`;
 
     return;
-  }
-  else{
-    document.getElementById('noData').style.display='none'
-
+  } else {
+    document.getElementById("noData").style.display = "none";
   }
 
   tableHTML.innerHTML = innerHtml;

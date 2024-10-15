@@ -373,7 +373,8 @@ td {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;display: none;
+  flex-direction: column;
+  display: none;
 }
 #reenterBtn:hover {
   background-color: #ffe800;
@@ -383,7 +384,6 @@ svg {
   color: white;
 }
 #mainHeader {
-  
   width: 100vw;
   height: auto;
   display: flex;
@@ -422,7 +422,8 @@ svg {
   padding: 50px 0;
   display: flex;
   align-items: center;
-  justify-content: center;display: none;
+  justify-content: center;
+  display: none;
 }
 #settingsDiv {
   width: 80%;
@@ -460,15 +461,15 @@ svg {
 .backImg:hover {
   cursor: pointer;
 }
-.entryDiv {
-}
+
 #reportTableDivContainer {
   width: 100vw;
   height: auto;
   padding: 30px 15px;
   display: flex;
   align-items: center;
-  justify-content: center;flex-direction: column;
+  justify-content: center;
+  flex-direction: column;
 }
 #reportTable {
   margin-bottom: 30px;
@@ -491,5 +492,3 @@ td {
 #reportTable tr {
   border-bottom: 1.4px solid lightgray;
 }
-
-
