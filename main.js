@@ -398,6 +398,11 @@ function formTable(reg, sub) {
 
     return;
   }
+  else{
+    document.getElementById('noData').style.display='none'
+
+  }
+
   tableHTML.innerHTML = innerHtml;
 }
 
