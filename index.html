@@ -15,7 +15,7 @@
 </head>
 <body>
   <div id="mainHeader" class="mainHeader">
-    <i class="fa-solid fa-gear"></i>
+    <button onclick="openSettings()" id="settingsBtn">Settings<i class="fa-solid fa-gear"></i></button>
   </div>
   <div id="content" class="content">
         <div id="bioDiv" class="bioDiv">
@@ -32,6 +32,18 @@
             <button onclick="start()" class="bigBtn" id="createBtn">Enter</button>
         </div>
         
+    </div>
+    <div class="settingsDivContainer" id="settingsDivContainer">
+      <div class="settingsDiv" id="settingsDiv">
+        <div class="settingsDivHeader" id="settingsDivHeader">
+          <button onclick="back('settings')" id="settingsBackBtn"><img src="back.png" alt=""></button>
+        </div>
+          
+        <div id="settingsDivContent">
+          <button class="btn" onclick="resetData()">Reset Data</button>
+        </div>
+
+      </div>
     </div>
 
     <!--Enter Div Start-->

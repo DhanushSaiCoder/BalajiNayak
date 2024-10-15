@@ -44,6 +44,12 @@ document.getElementById('mainHeader').style.display = 'flex'
 document.getElementById('mainHeader').style.display = 'flex'
         document.getElementById('content').style.display = 'flex';
         showMenu();
+    } else if (curr === 'settings'){
+      document.getElementById('settingsDivContainer').style.display = 'none'
+      document.getElementById('content').style.display = 'flex';
+      document.getElementById('settingsBtn').style.display = 'flex';
+
+
     }
 }
 document.getElementById('mainHeader').style.display = 'none'
@@ -193,8 +199,21 @@ function getDayObj() {
   }
 }
 
+document.getElementById('settingsDivContainer').style.display='none'
 
 function reEnter(){
    document.getElementById('enterContentDiv').style.display = 'flex'
   document.getElementById('successDiv').style.display = 'none'
+}
+
+function openSettings(){
+
+  document.getElementById('content').style.display='none'
+  document.getElementById('settingsBtn').style.display='none'
+  document.getElementById('settingsDivContainer').style.display='flex'
+
+}
+function resetData(){
+  localStorage.removeItem('dataArr')
+  window.location.href = 'index.html';
 }

@@ -336,7 +336,8 @@ th, td {
 .enterContentDiv label{
   text-align: center;
 }
-#submitBtn,#reenterBtn{
+#submitBtn,#reenterBtn,.btn{
+  color:#161400;
   width:auto;
   height:auto;
   padding: 10px 40px;
@@ -383,7 +384,55 @@ svg{
   font-size: 30px;
   color:#FFE800;
 }
-#mainHeader i:hover{
-  color:#ccbb00;
-  cursor:pointer;
+
+#settingsBtn{
+  background:transparent;
+  border:none;
+  width:auto;height:auto;
+  padding:10px 10px;
+  display: flex;align-items: center;justify-content: center;
+  font-size: large;
+}
+#settingsBtn i{
+  margin-left: 10px;
+}
+#settingsBtn:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+#settingsDivContainer{
+  width:100vw;
+  height:80vh;
+  padding:50px 0;
+  display: flex;align-items: center;justify-content: center;
+}
+#settingsDiv{
+  width:80%;
+  max-width: 500px;
+  height:600px;
+  border-radius:10px;
+  border:2.5px solid yellow;
+  background-color: #383300;
+}
+#settingsDivHeader{
+  width: 100%;
+  height:10%;
+  padding:10px;
+  border-bottom:.5px solid yellow;
+
+}
+#settingsBackBtn img{
+  width: 35px;
+  height:35px;
+
+}
+#settingsBackBtn{
+  background: transparent;
+  border:none;
+
+}
+#settingsDivContent{
+  width:100%;
+  height: 90%;
+  display: flex;align-items: center;justify-content: center;
 }
