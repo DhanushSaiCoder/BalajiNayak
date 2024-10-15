@@ -468,9 +468,10 @@ svg {
   padding: 30px 15px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;flex-direction: column;
 }
 #reportTable {
+  margin-bottom: 30px;
   width: 90%;
   font-size: small;
   max-width: 400px;

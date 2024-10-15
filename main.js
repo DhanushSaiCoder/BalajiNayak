@@ -238,12 +238,12 @@ function check() {
   for (let i = 0; i < dataArr.length; i++) {
     let obj = dataArr[i];
     if (
-      obj.year >= fromYear &&
-      obj.year <= toYear &&
-      obj.month >= fromMonth &&
-      obj.month <= toMonth &&
-      obj.date >= fromDay &&
-      obj.date <= toDay
+      (obj.year >= fromYear &&
+      obj.year <= toYear) &&
+      (obj.month >= fromMonth &&
+      obj.month <= toMonth) &&
+      (obj.date >= fromDay &&
+      obj.date <= toDay)
     ) {
       requiredData.push(obj);
     }
@@ -370,50 +370,71 @@ function formTable(reg, sub) {
   fullArr = filterClasses(fullArr, reg, sub);
 
   //generates the table row for each of the class in the fullArr
-  let tableHTML = document.getElementById("reportTable");
-  let innerHtml = tableHTML.innerHTML;
 
+  let tableHTML = document.getElementById("reportTable");
+
+  let innerHtml = tableHTML.innerHTML=`<table id="reportTable">
+  <tr class="tableRow">
+    <th>CLASS</th>
+    <th>REGULAR</th>
+    <th>SUBSTITUTION</th>
+    <th>TOTAL</th>
+  </tr>
+  
+</table>`;
+  let tempHtml = innerHtml;
   for (let i = 0; i < fullArr.length; i++) {
     let html = `
     <tr>
       <td>${fullArr[i]}</td>
-      <td>${countReg(fullArr[i],reg)}</td>
-      <td>${countSub(fullArr[i],sub)}</td>
-      <td>${countTotal(fullArr[i],reg,sub)} Periods</td>
+      <td>${countReg(fullArr[i], reg)}</td>
+      <td>${countSub(fullArr[i], sub)}</td>
+      <td>${countTotal(fullArr[i], reg, sub)} Periods</td>
     </tr>`;
-    innerHtml+=html;
-    console.log(`added row ${i+1}`)
+    innerHtml += html;
+    console.log(`added row ${i + 1}`);
+  }
+  if (innerHtml == tempHtml) {
+    document.getElementById(
+      "reportTableDivContainer"
+    ).innerHTML = `<table id="reportTable">
+          <tr class="tableRow">
+            <th>CLASS</th>
+            <th>REGULAR</th>
+            <th>SUBSTITUTION</th>
+            <th>TOTAL</th>
+          </tr>
+          
+        </table><p id="noData">No data found in entered dates</p>`;
+
+    return;
   }
   tableHTML.innerHTML = innerHtml;
 }
 
-function countReg(cls,reg){
+function countReg(cls, reg) {
   /*
     function countOccurrences(targetString, array) {
       const lowerCaseTarget = targetString.toLowerCase();
     return array.filter(item => item.toLowerCase() === lowerCaseTarget).length;
 
   */
-    const lowerCaseTarget = cls.toLowerCase();
-    return reg.filter(item => item.toLowerCase() === lowerCaseTarget).length;
-
-
+  const lowerCaseTarget = cls.toLowerCase();
+  return reg.filter((item) => item.toLowerCase() === lowerCaseTarget).length;
 }
 
-function countSub(cls,sub){
+function countSub(cls, sub) {
   /*
     function countOccurrences(targetString, array) {
       const lowerCaseTarget = targetString.toLowerCase();
     return array.filter(item => item.toLowerCase() === lowerCaseTarget).length;
 
   */
-    const lowerCaseTarget = cls.toLowerCase();
-    return sub.filter(item => item.toLowerCase() === lowerCaseTarget).length;
-
-
+  const lowerCaseTarget = cls.toLowerCase();
+  return sub.filter((item) => item.toLowerCase() === lowerCaseTarget).length;
 }
-function countTotal(cls,reg,sub){
-  return countReg(cls,reg) + countSub(cls,sub)
+function countTotal(cls, reg, sub) {
+  return countReg(cls, reg) + countSub(cls, sub);
 }
 
 function removeNulls(arr) {
