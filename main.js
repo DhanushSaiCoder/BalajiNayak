@@ -120,7 +120,6 @@ function submitForm() {
 
   for (let i = 0; i < 8; i++) generateClassString(i, formArr[i], dayObj);
 
-  console.log(dayObj);
 
   //send to local storage >>
 
@@ -212,6 +211,57 @@ function resetData() {
 
 /// report section >>
 
+// function isWithinRange(obj, fromDate, toDate) {
+//   let objDate = new Date(obj.year, obj.month - 1, obj.date);
+//   return objDate >= fromDate && objDate <= toDate;
+// }
+
+// function check() {
+//   let fromDateInput = document.getElementById("fromEle").value;
+//   let toDateInput = document.getElementById("toEle").value;
+//   let fromDate = new Date(fromDateInput);
+//   let toDate = new Date(toDateInput);
+
+//   // Gets the dataArr from the local storage
+//   let dataArr = JSON.parse(localStorage.getItem("dataArr"));
+
+//   // Gets the required data from the dataArr in the localstorage and stores it in requiredData[]
+//   let requiredData = [];
+//   for (let i = 0; i < dataArr.length; i++) {
+//     let obj = dataArr[i];
+//     if (isWithinRange(obj, fromDate, toDate)) {
+//       requiredData.push(obj);
+//     }
+//   }
+//   console.log(requiredData);
+
+//   // Fetches the requiredRegularClasses[]
+//   let requiredRegularClasses = [];
+//   for (let i = 0; i < requiredData.length; i++) {
+//     let obj = requiredData[i];
+//     requiredRegularClasses.push(...obj.regularClasses);
+//   }
+
+//   // Fetches the requiredSubstitutionClasses[]
+//   let requiredSubstitutionClasses = [];
+//   for (let i = 0; i < requiredData.length; i++) {
+//     let obj = requiredData[i];
+//     requiredSubstitutionClasses.push(...obj.substitutionClasses);
+//   }
+
+//   // Removes nulls from both the required arrays
+//   requiredRegularClasses = removeNulls(requiredRegularClasses);
+//   requiredSubstitutionClasses = removeNulls(requiredSubstitutionClasses);
+
+//   formTable(requiredRegularClasses, requiredSubstitutionClasses);
+// }
+
+
+
+function removeNulls(arr) {
+  return arr.filter(item => item !== null);
+}
+
 function isWithinRange(obj, fromDate, toDate) {
   let objDate = new Date(obj.year, obj.month - 1, obj.date);
   return objDate >= fromDate && objDate <= toDate;
@@ -229,25 +279,31 @@ function check() {
   // Gets the required data from the dataArr in the localstorage and stores it in requiredData[]
   let requiredData = [];
   for (let i = 0; i < dataArr.length; i++) {
-    let obj = dataArr[i];
-    if (isWithinRange(obj, fromDate, toDate)) {
-      requiredData.push(obj);
-    }
+      let obj = dataArr[i];
+      if (isWithinRange(obj, fromDate, toDate)) {
+          requiredData.push(obj);
+      } else if (fromDate.getTime() === toDate.getTime()) {
+          // Push the object if fromDate and toDate are the same and match objDate
+          if (obj.year === fromDate.getFullYear() && 
+              obj.month === (fromDate.getMonth() + 1) && 
+              obj.date === fromDate.getDate()) {
+              requiredData.push(obj);
+          }
+      }
   }
-  console.log(requiredData);
 
   // Fetches the requiredRegularClasses[]
   let requiredRegularClasses = [];
   for (let i = 0; i < requiredData.length; i++) {
-    let obj = requiredData[i];
-    requiredRegularClasses.push(...obj.regularClasses);
+      let obj = requiredData[i];
+      requiredRegularClasses.push(...obj.regularClasses);
   }
 
   // Fetches the requiredSubstitutionClasses[]
   let requiredSubstitutionClasses = [];
   for (let i = 0; i < requiredData.length; i++) {
-    let obj = requiredData[i];
-    requiredSubstitutionClasses.push(...obj.substitutionClasses);
+      let obj = requiredData[i];
+      requiredSubstitutionClasses.push(...obj.substitutionClasses);
   }
 
   // Removes nulls from both the required arrays
@@ -256,6 +312,8 @@ function check() {
 
   formTable(requiredRegularClasses, requiredSubstitutionClasses);
 }
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("reportBtn").addEventListener("click", check);
@@ -379,7 +437,6 @@ function formTable(reg, sub) {
       <td>${countTotal(fullArr[i], reg, sub)} Periods</td>
     </tr>`;
     innerHtml += html;
-    console.log(`added row ${i + 1}`);
   }
   if (innerHtml == tempHtml) {
     document.getElementById(
@@ -395,8 +452,6 @@ function formTable(reg, sub) {
         </table><p id="noData">No data found in entered dates</p>`;
 
     return;
-  } else {
-    document.getElementById("noData").style.display = "none";
   }
 
   tableHTML.innerHTML = innerHtml;
@@ -506,7 +561,6 @@ document.getElementById("profileImg").addEventListener("click", () => {
       });
     }
 
-    console.log(tempDataArr);
     localStorage.setItem("dataArr", JSON.stringify(tempDataArr));
   }
   return;
