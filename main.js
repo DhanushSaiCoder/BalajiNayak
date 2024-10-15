@@ -260,7 +260,7 @@ function check() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('checkButton').addEventListener('click', check);
+  document.getElementById('reportBtn').addEventListener('click', check);
 });
 
 function filterClasses(classes, regular, substitution) {
