@@ -36,11 +36,11 @@
     <div class="settingsDivContainer" id="settingsDivContainer">
       <div class="settingsDiv" id="settingsDiv">
         <div class="settingsDivHeader" id="settingsDivHeader">
-          <button onclick="back('settings')" id="settingsBackBtn"><img src="back.png" alt=""></button>
+          <button onclick="back('settings')" id="settingsBackBtn"><img class="backImg" id="backImg" src="back.png" alt=""></button>
         </div>
           
         <div id="settingsDivContent">
-          <button class="btn" onclick="resetData()">Reset Data</button>
+          <button id="btn" class="btn" onclick="resetData()">Reset Data</button>
         </div>
 
       </div>
@@ -52,7 +52,7 @@
 
       <header id="eHeader">
         <div class="backDiv">
-          <button onclick="back('enter')"><img src="back.png" alt="back.png"></button>
+          <button onclick="back('enter')"><img class="backImg" src="back.png" alt="back.png"></button>
         </div>
         <div id='headingDiv'>
           <h2 id="heading">Enter Today's Attendance</h2>
@@ -499,7 +499,7 @@
     <div id="reportDiv" class="reportDiv">
       <header id="rHeader">
       <div class="backDiv">
-        <button onclick="back('report')"><img src="back.png" alt="back.png"></button>
+        <button onclick="back('report')"><img class="backImg" src="back.png" alt="back.png"></button>
       </div>
       <h2 class="heading">Report</h2>
         
@@ -518,22 +518,7 @@
     <br>
     <button onclick="check()" class="bigBtn" id="reportBtn">Check Report</button>
     </div>
-    <div id='reportTableDiv' class="reportTableDiv">
-      <p id="emptyTxt"></p>
-      <div id="tableDiv" class="tableDiv">
-         <table border="1px" class="tableEle">
-         <thead>
-          <tr>
-          <td class="y"><b>CLASS</b></td>
-          <td class="y"><b>ATTENDED</b></td>
-          </tr>
-         </thead>
-         <tbody id="tbody">
-           
-         </tbody>
-         </table>
-      </div>
-    </div>
+    
   </div>
  
   <script src="https://kit.fontawesome.com/b316a242c7.js" crossorigin="anonymous"></script>
