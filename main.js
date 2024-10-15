@@ -6,8 +6,6 @@ document.getElementById("mainHeader").style.display = "none";
 document.getElementById("successDiv").style.display = "none";
 document.getElementById("settingsDivContainer").style.display = "none";
 
-
-
 // Function to start the login process
 function start() {
   var passEle = document.getElementById("passEle");
@@ -140,7 +138,6 @@ function submitForm() {
   document.getElementById("successDiv").style.display = "flex";
 }
 
-
 function getDayObj() {
   if (typeof localStorage !== "undefined") {
     if (localStorage.getItem("dataArr") === null) {
@@ -185,7 +182,6 @@ function getDayObj() {
     return null;
   }
 }
-
 
 function reEnter() {
   document.getElementById("enterContentDiv").style.display = "flex";
@@ -276,17 +272,157 @@ function check() {
   requiredRegularClasses = removeNulls(requiredRegularClasses);
   requiredSubstitutionClasses = removeNulls(requiredSubstitutionClasses);
 
-  console.log(requiredRegularClasses);
-  console.log(requiredSubstitutionClasses);
+  formTable(requiredRegularClasses, requiredSubstitutionClasses);
+}
+function filterClasses(classes, regular, substitution) {
+  // Combine regular and substitution arrays into a Set to remove duplicates
+  let combined = new Set([...regular, ...substitution]);
+
+  // Filter the classes array to keep only those present in the combined Set
+  return classes.filter((cls) => combined.has(cls));
+}
+
+function formTable(reg, sub) {
+  let fullArr = [
+    "1A",
+    "1B",
+    "1C",
+    "1D",
+    "1E",
+    "2A",
+    "2B",
+    "2C",
+    "2D",
+    "2E",
+    "3A",
+    "3B",
+    "3C",
+    "3D",
+    "3E",
+    "4A",
+    "4B",
+    "4C",
+    "4D",
+    "4E",
+    "5A",
+    "5B",
+    "5C",
+    "5D",
+    "5E",
+    "6A",
+    "6B",
+    "6C",
+    "6D",
+    "6E",
+    "7A",
+    "7B",
+    "7C",
+    "7D",
+    "7E",
+    "8A",
+    "8B",
+    "8C",
+    "8D",
+    "8E",
+    "9A",
+    "9B",
+    "9C",
+    "9D",
+    "9E",
+    "10A",
+    "10B",
+    "10C",
+    "10D",
+    "10E",
+    "MPC1A",
+    "MPC1B",
+    "MPC1C",
+    "MPC1D",
+    "MPC1E",
+    "MPC2A",
+    "MPC2B",
+    "MPC2C",
+    "MPC2D",
+    "MPC2E",
+    "BIPC1A",
+    "BIPC1B",
+    "BIPC1C",
+    "BIPC1D",
+    "BIPC1E",
+    "BIPC2A",
+    "BIPC2B",
+    "BIPC2C",
+    "BIPC2D",
+    "BIPC2E",
+    "MBIPC1A",
+    "MBIPC1B",
+    "MBIPC1C",
+    "MBIPC1D",
+    "MBIPC1E",
+    "MBIPC2A",
+    "MBIPC2B",
+    "MBIPC2C",
+    "MBIPC2D",
+    "MBIPC2E",
+  ];
+
+  // removes the classes which are not in either of reg and sub
+  fullArr = filterClasses(fullArr, reg, sub);
+
+  //generates the table row for each of the class in the fullArr
+  let tableHTML = document.getElementById("reportTable");
+  let innerHtml = tableHTML.innerHTML;
+
+  for (let i = 0; i < fullArr.length; i++) {
+    let html = `
+    <tr>
+      <td>${fullArr[i]}</td>
+      <td>${countReg(fullArr[i],reg)}</td>
+      <td>${countSub(fullArr[i],sub)}</td>
+      <td>${countTotal(fullArr[i],reg,sub)} Periods</td>
+    </tr>`;
+    innerHtml+=html;
+    console.log(`added row ${i+1}`)
+  }
+  tableHTML.innerHTML = innerHtml;
+}
+
+function countReg(cls,reg){
+  /*
+    function countOccurrences(targetString, array) {
+      const lowerCaseTarget = targetString.toLowerCase();
+    return array.filter(item => item.toLowerCase() === lowerCaseTarget).length;
+
+  */
+    const lowerCaseTarget = cls.toLowerCase();
+    return reg.filter(item => item.toLowerCase() === lowerCaseTarget).length;
+
+
+}
+
+function countSub(cls,sub){
+  /*
+    function countOccurrences(targetString, array) {
+      const lowerCaseTarget = targetString.toLowerCase();
+    return array.filter(item => item.toLowerCase() === lowerCaseTarget).length;
+
+  */
+    const lowerCaseTarget = cls.toLowerCase();
+    return sub.filter(item => item.toLowerCase() === lowerCaseTarget).length;
+
+
+}
+function countTotal(cls,reg,sub){
+  return countReg(cls,reg) + countSub(cls,sub)
 }
 
 function removeNulls(arr) {
   return arr.filter((item) => item !== null);
 }
 
-//generates temp data
+//generates temp data when clicked on the profile
 document.getElementById("profileImg").addEventListener("click", () => {
-  if (confirm("do you want to add temp data")) {
+  if (prompt("do you want to add temp data") == 99) {
     function getRandomClass() {
       const classes = [
         "1A",
