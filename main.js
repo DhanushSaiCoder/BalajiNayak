@@ -194,6 +194,70 @@ function openSettings() {
   document.getElementById("settingsDivContainer").style.display = "flex";
 }
 function resetData() {
-  localStorage.removeItem("dataArr");
+  let dataArr = [
+    {
+      date: new Date().getDate(),
+      month: new Date().getMonth() + 1,
+      year: new Date().getFullYear(),
+      regularClasses: [],
+      substitutionClasses: [],
+      totalRegClasses: 0,
+      totalSubClasses: 0,
+      totalClasses: 0,
+    },
+  ];
+  localStorage.setItem("dataArr", JSON.stringify(dataArr));
   window.location.href = "index.html";
 }
+
+/// report section >>
+
+function check() {
+  let fromDateInput = document.getElementById("fromEle").value;
+  let toDateInput = document.getElementById("toEle").value;
+
+  let fromDate = new Date(fromDateInput);
+  let toDate = new Date(toDateInput);
+
+  // gets the dates from inputs
+
+  let fromDay = fromDate.getDate();
+  let fromMonth = fromDate.getMonth() + 1;
+  let fromYear = fromDate.getFullYear();
+
+  let toDay = toDate.getDate();
+  let toMonth = toDate.getMonth() + 1;
+  let toYear = toDate.getFullYear();
+
+  //gets the dataArr from the local storage
+  let dataArr = JSON.parse(localStorage.getItem("dataArr"));
+}
+
+document.getElementById("profileImg").addEventListener("click", () => {
+  if (confirm("do you want to add temp data")) {
+    function getRandomClass() {
+      const classes = ['1A', '1B', '1C', '1D', '2A', '2B', '2C', '2D', '3A', '3B', '3C', '3D', '4A', '4B', '4C', '4D', '5A', '5B', '5C', '5D', '6A', '6B', '6C', '6D', '7A', '7B', '7C', '7D', '8A', '8B', '8C', '8D', '9A', '9B', '9C', '9D', 'BIPC1A', 'BIPC1B', 'BIPC1C', 'BIPC1D'];
+      return classes[Math.floor(Math.random() * classes.length)];
+    }
+    
+    function getRandomClassOrNull() {
+      return Math.random() < 0.25 ? null : getRandomClass();  // 25% chance of null
+    }
+    
+    let tempDataArr = JSON.parse(localStorage.getItem('dataArr'));
+    
+    for (let i = 1; i <= 30; i++) {
+      tempDataArr.push({
+        date: i,
+        month: 10,
+        year: 2024,
+        regularClasses: [getRandomClass(), getRandomClass(), getRandomClass(), getRandomClass()],
+        substitutionClasses: [getRandomClassOrNull(), getRandomClassOrNull(), getRandomClassOrNull(), getRandomClassOrNull()]
+      });
+    }
+    
+    console.log(tempDataArr);
+    localStorage.setItem('dataArr',JSON.stringify(tempDataArr))
+  }
+  return;
+});
