@@ -231,33 +231,132 @@ function check() {
 
   //gets the dataArr from the local storage
   let dataArr = JSON.parse(localStorage.getItem("dataArr"));
+
+  //gets the required data from the dataArr in the localstorage and stores in requiredData[]
+  let requiredData = [];
+
+  for (let i = 0; i < dataArr.length; i++) {
+    let obj = dataArr[i];
+    if (
+      obj.year >= fromYear &&
+      obj.year <= toYear &&
+      obj.month >= fromMonth &&
+      obj.month <= toMonth &&
+      obj.date >= fromDay &&
+      obj.date <= toDay
+    ) {
+      requiredData.push(obj);
+    }
+  }
+  console.log(requiredData);
+
+  //fetches the requiredRegularClasses[]
+  let requiredRegularClasses = [];
+  for (let i = 0; i < requiredData.length; i++) {
+    let obj = requiredData[i];
+    for (let j = 0; j < obj.regularClasses.length; j++) {
+      requiredRegularClasses.push(obj.regularClasses[j]);
+    }
+  }
+
+  //fetches the requiredSubstitutionClasses[]
+  let requiredSubstitutionClasses = [];
+  for (let i = 0; i < requiredData.length; i++) {
+    let obj = requiredData[i];
+    for (let j = 0; j < obj.substitutionClasses.length; j++) {
+      requiredSubstitutionClasses.push(obj.substitutionClasses[j]);
+    }
+  }
+
+  //removes nulls from both the required arrays
+  requiredRegularClasses = removeNulls(requiredRegularClasses);
+  requiredSubstitutionClasses = removeNulls(requiredSubstitutionClasses);
+  
+  console.log(requiredRegularClasses);
+  console.log(requiredSubstitutionClasses);
 }
 
+function removeNulls(arr) {
+  return arr.filter((item) => item !== null);
+}
+
+//generates temp data
 document.getElementById("profileImg").addEventListener("click", () => {
   if (confirm("do you want to add temp data")) {
     function getRandomClass() {
-      const classes = ['1A', '1B', '1C', '1D', '2A', '2B', '2C', '2D', '3A', '3B', '3C', '3D', '4A', '4B', '4C', '4D', '5A', '5B', '5C', '5D', '6A', '6B', '6C', '6D', '7A', '7B', '7C', '7D', '8A', '8B', '8C', '8D', '9A', '9B', '9C', '9D', 'BIPC1A', 'BIPC1B', 'BIPC1C', 'BIPC1D'];
+      const classes = [
+        "1A",
+        "1B",
+        "1C",
+        "1D",
+        "2A",
+        "2B",
+        "2C",
+        "2D",
+        "3A",
+        "3B",
+        "3C",
+        "3D",
+        "4A",
+        "4B",
+        "4C",
+        "4D",
+        "5A",
+        "5B",
+        "5C",
+        "5D",
+        "6A",
+        "6B",
+        "6C",
+        "6D",
+        "7A",
+        "7B",
+        "7C",
+        "7D",
+        "8A",
+        "8B",
+        "8C",
+        "8D",
+        "9A",
+        "9B",
+        "9C",
+        "9D",
+        "BIPC1A",
+        "BIPC1B",
+        "BIPC1C",
+        "BIPC1D",
+      ];
       return classes[Math.floor(Math.random() * classes.length)];
     }
-    
+
     function getRandomClassOrNull() {
-      return Math.random() < 0.25 ? null : getRandomClass();  // 25% chance of null
+      return Math.random() < 0.25 ? null : getRandomClass(); // 25% chance of null
     }
-    
-    let tempDataArr = JSON.parse(localStorage.getItem('dataArr'));
-    
+
+    let tempDataArr = JSON.parse(localStorage.getItem("dataArr"));
+
     for (let i = 1; i <= 30; i++) {
       tempDataArr.push({
         date: i,
         month: 10,
         year: 2024,
-        regularClasses: [getRandomClass(), getRandomClass(), getRandomClass(), getRandomClass()],
-        substitutionClasses: [getRandomClassOrNull(), getRandomClassOrNull(), getRandomClassOrNull(), getRandomClassOrNull()]
+        regularClasses: [
+          getRandomClass(),
+          getRandomClass(),
+          getRandomClass(),
+          getRandomClass(),
+        ],
+        substitutionClasses: [
+          getRandomClassOrNull(),
+          getRandomClassOrNull(),
+          getRandomClassOrNull(),
+          getRandomClassOrNull(),
+        ],
       });
     }
-    
+
     console.log(tempDataArr);
-    localStorage.setItem('dataArr',JSON.stringify(tempDataArr))
+    localStorage.setItem("dataArr", JSON.stringify(tempDataArr));
   }
   return;
 });
