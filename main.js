@@ -1,6 +1,7 @@
 // Declare the password
 let pass = "";
 let login = false;
+document.getElementById('incorrectTxt').style.display='none'
 
 document.getElementById("mainHeader").style.display = "none";
 document.getElementById("successDiv").style.display = "none";
@@ -16,7 +17,7 @@ function start() {
     document.getElementById("mainHeader").style.display = "flex";
   } else {
     passEle.value = "";
-    alert("Incorrect Password");
+    document.getElementById('incorrectTxt').style.display='flex'
   }
 }
 

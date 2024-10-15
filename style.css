@@ -94,9 +94,7 @@ option {
   flex-direction: column;
   padding: 10px 5px;
 }
-#createBtn {
-  margin-top: 20px;
-}
+
 .attendanceSheetDiv {
   width: 100vw;
   height: 100vh;
@@ -513,4 +511,11 @@ input[type="date"]:hover {
 
 #reportTable tr th{
   text-align: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#incorrectTxt{
+  color:#e81123;
+  margin-top: 20px;
+  display: none;
 }
