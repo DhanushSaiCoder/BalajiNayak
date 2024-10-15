@@ -1,6 +1,13 @@
 // Declare the password
 let pass = "";
 let login = false;
+
+document.getElementById("mainHeader").style.display = "none";
+document.getElementById("successDiv").style.display = "none";
+document.getElementById("settingsDivContainer").style.display = "none";
+
+
+
 // Function to start the login process
 function start() {
   var passEle = document.getElementById("passEle");
@@ -48,7 +55,6 @@ function back(curr) {
     document.getElementById("settingsBtn").style.display = "flex";
   }
 }
-document.getElementById("mainHeader").style.display = "none";
 
 // Function to show the menu
 function showMenu() {
@@ -134,7 +140,6 @@ function submitForm() {
   document.getElementById("successDiv").style.display = "flex";
 }
 
-document.getElementById("successDiv").style.display = "none";
 
 function getDayObj() {
   if (typeof localStorage !== "undefined") {
@@ -181,7 +186,6 @@ function getDayObj() {
   }
 }
 
-document.getElementById("settingsDivContainer").style.display = "none";
 
 function reEnter() {
   document.getElementById("enterContentDiv").style.display = "flex";
@@ -271,7 +275,7 @@ function check() {
   //removes nulls from both the required arrays
   requiredRegularClasses = removeNulls(requiredRegularClasses);
   requiredSubstitutionClasses = removeNulls(requiredSubstitutionClasses);
-  
+
   console.log(requiredRegularClasses);
   console.log(requiredSubstitutionClasses);
 }

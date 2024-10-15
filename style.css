@@ -373,7 +373,7 @@ td {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column;display: none;
 }
 #reenterBtn:hover {
   background-color: #ffe800;
@@ -383,11 +383,13 @@ svg {
   color: white;
 }
 #mainHeader {
+  
   width: 100vw;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  display: none;
   padding: 20px 20px;
 }
 #mainHeader i {
@@ -420,7 +422,7 @@ svg {
   padding: 50px 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;display: none;
 }
 #settingsDiv {
   width: 80%;
