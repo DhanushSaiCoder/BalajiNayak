@@ -212,68 +212,57 @@ function resetData() {
 
 /// report section >>
 
+
+
+function isWithinRange(obj, fromDate, toDate) {
+  let objDate = new Date(obj.year, obj.month - 1, obj.date);
+  return objDate >= fromDate && objDate <= toDate;
+}
+
 function check() {
   let fromDateInput = document.getElementById("fromEle").value;
   let toDateInput = document.getElementById("toEle").value;
-
   let fromDate = new Date(fromDateInput);
   let toDate = new Date(toDateInput);
 
-  // gets the dates from inputs
-
-  let fromDay = fromDate.getDate();
-  let fromMonth = fromDate.getMonth() + 1;
-  let fromYear = fromDate.getFullYear();
-
-  let toDay = toDate.getDate();
-  let toMonth = toDate.getMonth() + 1;
-  let toYear = toDate.getFullYear();
-
-  //gets the dataArr from the local storage
+  // Gets the dataArr from the local storage
   let dataArr = JSON.parse(localStorage.getItem("dataArr"));
 
-  //gets the required data from the dataArr in the localstorage and stores in requiredData[]
+  // Gets the required data from the dataArr in the localstorage and stores it in requiredData[]
   let requiredData = [];
-
   for (let i = 0; i < dataArr.length; i++) {
-    let obj = dataArr[i];
-    if (
-      (obj.year >= fromYear &&
-      obj.year <= toYear) &&
-      (obj.month >= fromMonth &&
-      obj.month <= toMonth) &&
-      (obj.date >= fromDay &&
-      obj.date <= toDay)
-    ) {
-      requiredData.push(obj);
-    }
+      let obj = dataArr[i];
+      if (isWithinRange(obj, fromDate, toDate)) {
+          requiredData.push(obj);
+      }
   }
   console.log(requiredData);
 
-  //fetches the requiredRegularClasses[]
+  // Fetches the requiredRegularClasses[]
   let requiredRegularClasses = [];
   for (let i = 0; i < requiredData.length; i++) {
-    let obj = requiredData[i];
-    for (let j = 0; j < obj.regularClasses.length; j++) {
-      requiredRegularClasses.push(obj.regularClasses[j]);
-    }
+      let obj = requiredData[i];
+      requiredRegularClasses.push(...obj.regularClasses);
   }
 
-  //fetches the requiredSubstitutionClasses[]
+  // Fetches the requiredSubstitutionClasses[]
   let requiredSubstitutionClasses = [];
   for (let i = 0; i < requiredData.length; i++) {
-    let obj = requiredData[i];
-    for (let j = 0; j < obj.substitutionClasses.length; j++) {
-      requiredSubstitutionClasses.push(obj.substitutionClasses[j]);
-    }
+      let obj = requiredData[i];
+      requiredSubstitutionClasses.push(...obj.substitutionClasses);
   }
 
-  //removes nulls from both the required arrays
+  // Removes nulls from both the required arrays
   requiredRegularClasses = removeNulls(requiredRegularClasses);
   requiredSubstitutionClasses = removeNulls(requiredSubstitutionClasses);
 
   formTable(requiredRegularClasses, requiredSubstitutionClasses);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('checkButton').addEventListener('click', check);
+});
+
 function filterClasses(classes, regular, substitution) {
   // Combine regular and substitution arrays into a Set to remove duplicates
   let combined = new Set([...regular, ...substitution]);
