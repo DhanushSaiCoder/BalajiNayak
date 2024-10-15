@@ -511,3 +511,6 @@ input[type="date"]:hover {
   background-color: #fff9b9;
 }
 
+#reportTable tr th{
+  text-align: left;
+}
