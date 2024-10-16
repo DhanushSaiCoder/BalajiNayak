@@ -519,3 +519,8 @@ input[type="date"]:hover {
   margin-top: 20px;
   display: none;
 }
+#noDataImg{
+  width:100px;
+  height: auto ;
+  display: none;
+}

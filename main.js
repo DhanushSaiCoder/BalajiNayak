@@ -428,12 +428,15 @@ function formTable(reg, sub) {
   console.log(fullArr);
 
   if (fullArr.length==0) {
+    document.getElementById('noDataImg').style.display='flex'
     document.getElementById("noData").innerText = "No Data Found";
     tableHTML.innerHTML=''
     tableHTML.innerText=''
     return;
   }
   else{
+    document.getElementById('noDataImg').style.display='none'
+
     document.getElementById("noData").innerText = "";
     
   }
