@@ -1,7 +1,7 @@
 // Declare the password
 let pass = "";
 let login = false;
-document.getElementById('incorrectTxt').style.display='none'
+document.getElementById("incorrectTxt").style.display = "none";
 
 document.getElementById("mainHeader").style.display = "none";
 document.getElementById("successDiv").style.display = "none";
@@ -17,7 +17,7 @@ function start() {
     document.getElementById("mainHeader").style.display = "flex";
   } else {
     passEle.value = "";
-    document.getElementById('incorrectTxt').style.display='flex'
+    document.getElementById("incorrectTxt").style.display = "flex";
   }
 }
 
@@ -120,7 +120,6 @@ function submitForm() {
   let formArr = [form1, form2, form3, form4, form5, form6, form7, form8];
 
   for (let i = 0; i < 8; i++) generateClassString(i, formArr[i], dayObj);
-
 
   //send to local storage >>
 
@@ -257,10 +256,8 @@ function resetData() {
 //   formTable(requiredRegularClasses, requiredSubstitutionClasses);
 // }
 
-
-
 function removeNulls(arr) {
-  return arr.filter(item => item !== null);
+  return arr.filter((item) => item !== null);
 }
 
 function isWithinRange(obj, fromDate, toDate) {
@@ -280,31 +277,33 @@ function check() {
   // Gets the required data from the dataArr in the localstorage and stores it in requiredData[]
   let requiredData = [];
   for (let i = 0; i < dataArr.length; i++) {
-      let obj = dataArr[i];
-      if (isWithinRange(obj, fromDate, toDate)) {
-          requiredData.push(obj);
-      } else if (fromDate.getTime() === toDate.getTime()) {
-          // Push the object if fromDate and toDate are the same and match objDate
-          if (obj.year === fromDate.getFullYear() && 
-              obj.month === (fromDate.getMonth() + 1) && 
-              obj.date === fromDate.getDate()) {
-              requiredData.push(obj);
-          }
+    let obj = dataArr[i];
+    if (isWithinRange(obj, fromDate, toDate)) {
+      requiredData.push(obj);
+    } else if (fromDate.getTime() === toDate.getTime()) {
+      // Push the object if fromDate and toDate are the same and match objDate
+      if (
+        obj.year === fromDate.getFullYear() &&
+        obj.month === fromDate.getMonth() + 1 &&
+        obj.date === fromDate.getDate()
+      ) {
+        requiredData.push(obj);
       }
+    }
   }
 
   // Fetches the requiredRegularClasses[]
   let requiredRegularClasses = [];
   for (let i = 0; i < requiredData.length; i++) {
-      let obj = requiredData[i];
-      requiredRegularClasses.push(...obj.regularClasses);
+    let obj = requiredData[i];
+    requiredRegularClasses.push(...obj.regularClasses);
   }
 
   // Fetches the requiredSubstitutionClasses[]
   let requiredSubstitutionClasses = [];
   for (let i = 0; i < requiredData.length; i++) {
-      let obj = requiredData[i];
-      requiredSubstitutionClasses.push(...obj.substitutionClasses);
+    let obj = requiredData[i];
+    requiredSubstitutionClasses.push(...obj.substitutionClasses);
   }
 
   // Removes nulls from both the required arrays
@@ -313,8 +312,6 @@ function check() {
 
   formTable(requiredRegularClasses, requiredSubstitutionClasses);
 }
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("reportBtn").addEventListener("click", check);
@@ -327,6 +324,10 @@ function filterClasses(classes, regular, substitution) {
   // Filter the classes array to keep only those present in the combined Set
   return classes.filter((cls) => combined.has(cls));
 }
+
+
+document.getElementById('reportTable').innerHTML=`` //removes the table before the report button is clicked
+
 
 function formTable(reg, sub) {
   let fullArr = [
@@ -411,24 +412,33 @@ function formTable(reg, sub) {
     "MBIPC2D",
     "MBIPC2E",
   ];
+  let tableHTML = document.getElementById("reportTable");
+  let innerHtml = (tableHTML.innerHTML = `
+    <table id="reportTable">
+      <tr class="tableRow">
+        <th>CLASS</th>
+        <th>REGULAR</th>
+        <th>SUBSTITUTION</th>
+        <th>TOTAL</th>
+      </tr>
+    </table>`);
 
   // removes the classes which are not in either of reg and sub
   fullArr = filterClasses(fullArr, reg, sub);
+  console.log(fullArr);
 
+  if (fullArr.length==0) {
+    document.getElementById("noData").innerText = "No Data Found";
+    tableHTML.innerHTML=''
+    tableHTML.innerText=''
+    return;
+  }
+  else{
+    document.getElementById("noData").innerText = "";
+    
+  }
   //generates the table row for each of the class in the fullArr
 
-  let tableHTML = document.getElementById("reportTable");
-
-  let innerHtml = (tableHTML.innerHTML = `<table id="reportTable">
-  <tr class="tableRow">
-    <th>CLASS</th>
-    <th>REGULAR</th>
-    <th>SUBSTITUTION</th>
-    <th>TOTAL</th>
-  </tr>
-  
-</table>`);
-  let tempHtml = innerHtml;
   for (let i = 0; i < fullArr.length; i++) {
     let html = `
     <tr>
@@ -438,21 +448,6 @@ function formTable(reg, sub) {
       <td>${countTotal(fullArr[i], reg, sub)} Periods</td>
     </tr>`;
     innerHtml += html;
-  }
-  if (innerHtml == tempHtml) {
-    document.getElementById(
-      "reportTableDivContainer"
-    ).innerHTML = `<table id="reportTable">
-          <tr class="tableRow">
-            <th>CLASS</th>
-            <th>REGULAR</th>
-            <th>SUBSTITUTION</th>
-            <th>TOTAL</th>
-          </tr>
-          
-        </table><p id="noData">No data found in entered dates</p>`;
-
-    return;
   }
 
   tableHTML.innerHTML = innerHtml;
