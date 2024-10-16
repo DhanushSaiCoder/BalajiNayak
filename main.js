@@ -1,5 +1,5 @@
 // Declare the password
-let pass = "";
+let pass = "7884";
 let login = false;
 document.getElementById("incorrectTxt").style.display = "none";
 
@@ -485,6 +485,7 @@ function removeNulls(arr) {
 //generates temp data when clicked on the profile
 document.getElementById("profileImg").addEventListener("click", () => {
   if (prompt("do you want to add temp data") == 99) {
+    let month=prompt('Enter month')
     function getRandomClass() {
       const classes = [
         "1A",
@@ -540,7 +541,7 @@ document.getElementById("profileImg").addEventListener("click", () => {
     for (let i = 1; i <= 30; i++) {
       tempDataArr.push({
         date: i,
-        month: 10,
+        month: month,
         year: 2024,
         regularClasses: [
           getRandomClass(),
