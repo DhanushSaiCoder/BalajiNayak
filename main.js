@@ -1,5 +1,5 @@
 // Declare the password
-let pass = "";
+let pass = "7884";
 let login = false;
 document.getElementById("incorrectTxt").style.display = "none";
 
