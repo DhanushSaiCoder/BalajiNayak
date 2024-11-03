@@ -1,5 +1,5 @@
 // Declare the password
-let pass = "7884";
+let pass = "";
 let login = false;
 document.getElementById("incorrectTxt").style.display = "none";
 
@@ -327,7 +327,7 @@ function filterClasses(classes, regular, substitution) {
 
 
 document.getElementById('reportTable').innerHTML=`` //removes the table before the report button is clicked
-
+document.getElementById('downloadBtn').style.display='none'
 
 function formTable(reg, sub) {
   let fullArr = [
@@ -430,13 +430,14 @@ function formTable(reg, sub) {
   if (fullArr.length==0) {
     document.getElementById('noDataImg').style.display='flex'
     document.getElementById("noData").innerText = "No Data Found";
+    document.getElementById('downloadBtn').style.display='none'
     tableHTML.innerHTML=''
     tableHTML.innerText=''
     return;
   }
   else{
     document.getElementById('noDataImg').style.display='none'
-
+    document.getElementById('downloadBtn').style.display='flex'
     document.getElementById("noData").innerText = "";
     
   }
@@ -565,3 +566,28 @@ document.getElementById("profileImg").addEventListener("click", () => {
   }
   return;
 });
+
+
+
+
+
+function captureAttendance() {
+  const table = document.getElementById("reportTable"); // Replace with your table's ID
+  
+  let fromDateInput = document.getElementById("fromEle").value;
+  let toDateInput = document.getElementById("toEle").value;
+  let fromDate = new Date(fromDateInput);
+  let toDate = new Date(toDateInput);
+  
+  let fromDatef = `${String(fromDate.getDate()).padStart(2, '0')}/${String(fromDate.getMonth() + 1).padStart(2, '0')}/${fromDate.getFullYear()}`;
+  let toDatef = `${String(toDate.getDate()).padStart(2, '0')}/${String(toDate.getMonth() + 1).padStart(2, '0')}/${toDate.getFullYear()}`;
+  
+  
+
+  html2canvas(table).then((canvas) => {
+    const link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    link.download =`${fromDatef}_to_${toDatef}_Report.png`;
+    link.click();
+  });
+}

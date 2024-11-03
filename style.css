@@ -524,3 +524,12 @@ input[type="date"]:hover {
   height: auto ;
   display: none;
 }
+
+
+#downloadBtn{
+  width: auto;
+  color: #000;
+  padding: 10px 10px;
+  
+  
+}
