@@ -1,3 +1,4 @@
+console.log('started')
 // Declare the password
 let pass = "7884";
 let login = false;
@@ -6,6 +7,8 @@ document.getElementById("incorrectTxt").style.display = "none";
 document.getElementById("mainHeader").style.display = "none";
 document.getElementById("successDiv").style.display = "none";
 document.getElementById("settingsDivContainer").style.display = "none";
+
+
 
 // Function to start the login process
 function start() {
